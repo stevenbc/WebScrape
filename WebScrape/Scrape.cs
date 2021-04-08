@@ -15,7 +15,6 @@ namespace WebScrape
             foreach(var webpage in webPages)
             {
                 Task<SiteData > lastTask = siteAsString.GetSiteData(webpage);
-                //lastTask.Start();
                 taskList.Add(lastTask);
             }
 
