@@ -22,9 +22,24 @@ namespace WebScrape_ConsoleApp
                 Console.WriteLine(webPage);
             }
 
+            Console.WriteLine($"Does path exist {filePath}");
+            if (!Directory.Exists(filePath))
+            {
+                Console.WriteLine($"Path does not exist {filePath} trying to create...");
+                try
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error creating Path {filePath} Please create manually Error message {ex.Message}");
+                    Console.ReadLine();
+                    return;
+                }
+            }
             Scrape scrape = new Scrape();
             List < SiteData > webContents = scrape.GetSites(webPages);
-
+            
             for (var i = 0; i < webPages.Count; i++)
             {
 
